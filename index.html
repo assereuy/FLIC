@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FLIC Esportes - Contato</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fefefe;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #f46b45;
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    .banner {
+      width: 100%;
+      height: auto;
+    }
+    .container {
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 20px;
+      padding: 15px;
+      width: 100%;
+      background-color: #28a745;
+      color: white;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>FLIC ESPORTES</h1>
+    <p>Ginástica divertida e saudável para crianças</p>
+  </header>
+
+  <img src="https://cdn.pixabay.com/photo/2016/10/22/19/25/gymnastics-1768538_960_720.jpg" alt="Crianças fazendo ginástica" class="banner">
+
+  <div class="container">
+    <h2>Inscreva seu filho</h2>
+    <form id="form">
+      <label for="nome">Seu nome:</label>
+      <input type="text" id="nome" required>
+
+      <label for="idade">Idade da criança:</label>
+      <input type="number" id="idade" min="1" max="12" required>
+
+      <label for="horario">Horário de interesse:</label>
+      <select id="horario" required>
+        <option value="">Selecione</option>
+        <option value="Segunda 18h30 às 20h30">Segunda 18h30 às 20h30</option>
+        <option value="Quarta 18h30 às 20h30">Quarta 18h30 às 20h30</option>
+        <option value="Terça e Quinta 18h30 às 19h30">Terça e Quinta 18h30 às 19h30</option>
+        <option value="Terça e Quinta 19h30 às 20h30">Terça e Quinta 19h30 às 20h30</option>
+        <option value="Segunda e Quarta 17h30 às 18h30">Segunda e Quarta 17h30 às 18h30</option>
+        <option value="Terça e Quinta 17h30 às 18h30">Terça e Quinta 17h30 às 18h30</option>
+        <option value="Gym Baby - Terça e Quinta 9h às 9h50">Gym Baby - Terça e Quinta 9h às 9h50</option>
+        <option value="Gym Baby - Terça e Quinta 10h às 10h50">Gym Baby - Terça e Quinta 10h às 10h50</option>
+      </select>
+
+      <label for="mensagem">Mensagem (opcional):</label>
+      <textarea id="mensagem" rows="4"></textarea>
+
+      <button type="button" onclick="enviarWhatsApp()">Enviar pelo WhatsApp</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 FLIC ESPORTES
+  </footer>
+
+  <script>
+    function enviarWhatsApp() {
+      const nome = document.getElementById("nome").value;
+      const idade = document.getElementById("idade").value;
+      const horario = document.getElementById("horario").value;
+      const mensagem = document.getElementById("mensagem").value;
+
+      if (!nome || !idade || !horario) {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+        return;
+      }
+
+      const texto = `Olá! Me chamo ${nome}. Gostaria de informações sobre a turma de ${horario} para meu filho de ${idade} anos. ${mensagem ? '\nMensagem adicional: ' + mensagem : ''}`;
+
+      const numero = "5527997422304";
+      const link = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+      window.open(link, "_blank");
+    }
+  </script>
+
+</body>
+</html>
